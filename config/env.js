@@ -7,7 +7,7 @@ const paths = require('./paths');
 // Make sure that including paths.js after env.js will read .env variables.
 delete require.cache[require.resolve('./paths')];
 
-const NODE_ENV = process.env.NODE_ENV;
+const { NODE_ENV } = process.env;
 if (!NODE_ENV) {
     throw new Error(
         'The NODE_ENV environment variable is required but was not specified.',
@@ -15,7 +15,7 @@ if (!NODE_ENV) {
 }
 
 // https://github.com/bkeepers/dotenv#what-other-env-files-can-i-use
-var dotenvFiles = [
+const dotenvFiles = [
     `${paths.dotenv}.${NODE_ENV}.local`,
     `${paths.dotenv}.${NODE_ENV}`,
     // Don't include `.env.local` for `test` environment
@@ -32,7 +32,9 @@ var dotenvFiles = [
 // https://github.com/motdotla/dotenv-expand
 dotenvFiles.forEach(dotenvFile => {
     if (fs.existsSync(dotenvFile)) {
+        // eslint-disable-next-line global-require
         require('dotenv-expand')(
+            // eslint-disable-next-line global-require
             require('dotenv').config({
                 path: dotenvFile,
             }),
@@ -65,6 +67,7 @@ function getClientEnvironment(publicUrl) {
         .filter(key => REACT_APP.test(key))
         .reduce(
             (env, key) => {
+                // eslint-disable-next-line no-param-reassign
                 env[key] = process.env[key];
                 return env;
             },
@@ -82,6 +85,7 @@ function getClientEnvironment(publicUrl) {
     // Stringify all values so we can feed into Webpack DefinePlugin
     const stringified = {
         'process.env': Object.keys(raw).reduce((env, key) => {
+            // eslint-disable-next-line no-param-reassign
             env[key] = JSON.stringify(raw[key]);
             return env;
         }, {}),

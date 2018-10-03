@@ -15,14 +15,15 @@ function ensureSlash(inputPath, needsSlash) {
     const hasSlash = inputPath.endsWith('/');
     if (hasSlash && !needsSlash) {
         return inputPath.substr(0, inputPath.length - 1);
-    } else if (!hasSlash && needsSlash) {
-        return `${inputPath}/`;
-    } else {
-        return inputPath;
     }
+    if (!hasSlash && needsSlash) {
+        return `${inputPath}/`;
+    }
+    return inputPath;
 }
 
 const getPublicUrl = appPackageJson =>
+    // eslint-disable-next-line global-require, import/no-dynamic-require
     envPublicUrl || require(appPackageJson).homepage;
 
 // We use `PUBLIC_URL` environment variable or "homepage" field to infer

@@ -61,9 +61,12 @@
   },
   "scripts": {
     "start": "node scripts/start.js",
+    "prebuild": "npm run prettier",
     "build": "node scripts/build.js",
+    "pretest": "npm run prettier",
     "test": "node scripts/test.js",
-    "prettier": "prettier \"./{src,scripts,config}/**/*.{js,jsx,css,scss}\" --write"
+    "prettier": "prettier \"./{src,scripts,config}/**/*.{js,jsx,css,scss}\" --write",
+    "lint": "eslint \"./{src,scripts,config}/**/*.{js,jsx}\""
   },
   "browserslist": [
     ">0.2%",

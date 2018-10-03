@@ -1,0 +1,6 @@
+{
+  "rules": {
+    "strict": "off",
+    "import/no-extraneous-dependencies": "off"
+  }
+}
