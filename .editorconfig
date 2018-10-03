@@ -12,13 +12,13 @@ indent_style = space
 insert_final_newline = true
 trim_trailing_whitespace = true
 
-[*.{feature,rb}]
-indent_size = 2
-
 [*.md]
 trim_trailing_whitespace = false
 
 [*.yml]
+indent_size = 2
+
+[*.json]
 indent_size = 2
 
 [package.json]
