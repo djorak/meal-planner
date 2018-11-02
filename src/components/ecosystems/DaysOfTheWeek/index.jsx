@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Day from '../Day';
+import Day from '../../organisms/Day';
 
 const DaysOfTheWeek = () => (
     <div className="DaysOfTheWeek">

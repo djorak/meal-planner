@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 
-import MealPlanner from '../MealPlanner';
+import MealPlanner from '../components/MealPlanner';
 
 it('renders without crashing', () => {
     const mealPlannerWrapper = shallow(<MealPlanner />);

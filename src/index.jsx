@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 
 import './index.scss';
-import MealPlanner from './components/MealPlanner';
+import MealPlanner from './components/environment/MealPlanner';
 import * as serviceWorker from './serviceWorker';
 
 ReactDOM.render(<MealPlanner />, document.getElementById('root'));
